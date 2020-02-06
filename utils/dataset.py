@@ -41,3 +41,12 @@ def googlenet_transform():
                                     transforms.ToTensor(),
                                     ])
     return transform
+
+def resnet_transform():
+    #the original googlenet crops 224*224 image from right,left, center 
+    # sides of images. Here I just resize the image to be 227*227
+    transform = transforms.Compose([
+                                    transforms.Resize((227,227)),
+                                    transforms.ToTensor(),
+                                    ])
+    return transform

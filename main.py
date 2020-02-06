@@ -8,18 +8,31 @@ from PIL import Image
 from torch.autograd import Variable
 from models.alexnet import *
 from models.googlenet import *
+from models.resnet import *
 from utils.dataset import *
 
 
 def main():
     epoch = 2
-    chosen_model = "googlenet"
+    class_number = 2
+    chosen_model = "resnet50"
     transform = googlenet_transform()
 
     if chosen_model == "alexnet":
-        model = alexnet(class_num = 2)
+        model = alexnet(class_num = class_number)
     elif chosen_model == "googlenet":
-        model = googlenet(class_num = 2)
+        model = googlenet(class_num = class_number)
+    elif chosen_model == "resnet18":
+        model = resnet18(class_num = class_number)
+    elif chosen_model == "resnet34":
+        model = resnet34(class_num = class_number)
+    elif chosen_model == "resnet50":
+        model = resnet50(class_num = class_number)
+    elif chosen_model == "resnet101":
+        model = resnet101(class_num = class_number)
+    elif chosen_model == "resnet152":
+        model = resnet152(class_num = class_number)
+
 
     use_gpu = torch.cuda.is_available()
     if use_gpu:
