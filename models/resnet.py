@@ -108,21 +108,13 @@ class Resnet(nn.Module):
 
     def forward(self, x):
         x = self.pre(x)
-        print(x.size())
         x = self.conv2_x(x)
-        print(x.size())
         x = self.conv3_x(x)
-        print(x.size())
         x = self.conv4_x(x)
-        print(x.size())
         x = self.conv5_x(x)
-        print(x.size())
         x = self.out(x)
-        print(x.size())
         x = x.view(x.size(0), -1)
-        print(x.size())
         x = self.fc_layer(x)
-        print(x.size())
         return x
 
 def resnet18(**kwargs):
